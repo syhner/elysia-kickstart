@@ -1,12 +1,13 @@
 {
   "name": "elysia-kickstart",
-  "module": "src/index.ts",
+  "module": "src/index.tsx",
   "type": "module",
   "scripts": {
-    "start": "bun run src/index.ts",
-    "dev": "bun run --watch src/index.ts"
+    "start": "bun run src/index.tsx",
+    "dev": "bun run --watch src/index.tsx"
   },
   "dependencies": {
+    "@elysiajs/html": "^0.6.5",
     "elysia": "^0.6.23"
   },
   "devDependencies": {
