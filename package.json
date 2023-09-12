@@ -5,16 +5,19 @@
   "type": "module",
   "scripts": {
     "start": "bun run src/index.tsx",
-    "dev": "bun run --watch src/index.tsx"
+    "dev": "bun run --watch src/index.tsx",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src --fix"
   },
   "dependencies": {
     "@elysiajs/html": "^0.6.5",
     "elysia": "^0.6.23"
   },
   "devDependencies": {
-    "bun-types": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "bun-types": "latest",
+    "eslint": "^8.49.0",
+    "typescript": "^5.2.2"
   }
 }
