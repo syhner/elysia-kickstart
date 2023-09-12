@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "name": "elysia-kickstart",
   "module": "src/index.tsx",
   "type": "module",
