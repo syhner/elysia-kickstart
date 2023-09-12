@@ -1,24 +1,55 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "composite": true,
+    /* Type Checking */
+    "noUncheckedIndexedAccess": true, // Increases type-safety
     "strict": true,
+
+    /* Modules */
+    "allowImportingTsExtensions": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "~/*": ["./src/*"] // Alias for absolute imports
+    },
+    // "resolveJsonModule": true,
+    "types": ["bun-types"], // add Bun global
+
+    /* Emit */
     "downlevelIteration": true,
-    "skipLibCheck": true,
+    "noEmit": true,
+
+    /* JavaScript Support */
+    "allowJs": true,
+
+    /* Editor Support */
+
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Backwards Compatibility */
+
+    /* Language and Environment */
     "jsx": "react",
     "jsxFactory": "ElysiaJSX",
     "jsxFragmentFactory": "ElysiaJSX.Fragment",
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowJs": true,
-    "types": [
-      "bun-types" // add Bun global
-    ]
+    "lib": ["ESNext"],
+    "moduleDetection": "force",
+    "target": "ESNext",
+
+    /* Compiler Diagnostics */
+
+    /* Projects */
+    "composite": true,
+
+    /* Output Formatting */
+
+    /* Completeness */
+    "skipLibCheck": true
+
+    /* Command Line */
+
+    /* Watch Options */
   }
 }
