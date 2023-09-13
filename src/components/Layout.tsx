@@ -18,6 +18,7 @@ export const Layout = (props: Props & elements.Children) => {
           />
           <title>{title}</title>
           <link href='/dist/globals.css' rel='stylesheet' />
+          <script src='/public/htmx@1.9.5.min.js'></script>
           <script src='/public/use-theme.js' />
         </head>
         <body>{props.children}</body>

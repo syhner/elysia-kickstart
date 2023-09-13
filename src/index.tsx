@@ -12,6 +12,10 @@ const app = new Elysia()
   .get('/', () => (
     <Layout>
       <h1 class='text-lg'>Hello, World!</h1>
+      <button hx-get='/api/ping' hx-swap='innerHTML' hx-target='#pong'>
+        Ping the server
+      </button>
+      <div id='pong'>ping request not sent...</div>
     </Layout>
   ));
 

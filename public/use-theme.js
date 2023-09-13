@@ -1,5 +1,3 @@
-/* global console, document, localStorage, window */
-
 // If user does not have a theme preference, use system theme
 if (!localStorage.theme) {
   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {

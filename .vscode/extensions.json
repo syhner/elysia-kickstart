@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ms-azuretools.vscode-docker",
+    "otovo-oss.htmx-tags",
     "oven.bun-vscode"
   ]
 }

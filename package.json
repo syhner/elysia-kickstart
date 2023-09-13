@@ -9,8 +9,8 @@
     "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run tw --watch\"",
     "tw": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
     "----CHECK": "",
-    "format:check": "prettier --ignore-path .gitignore --check .",
-    "format:fix": "prettier --ignore-path .gitignore --write .",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "eslint --ignore-path .gitignore --fix . ",
     "typecheck": "tsc --noEmit"
