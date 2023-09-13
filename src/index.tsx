@@ -1,11 +1,13 @@
 import { html } from '@elysiajs/html';
 import { staticPlugin } from '@elysiajs/static';
+import { swagger } from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
 import { Layout } from './components/Layout';
 import { router as apiRouter } from './router/api/router';
 import { router as todosRouter } from './router/todos/router';
 
 export const app = new Elysia()
+  .use(swagger())
   .use(apiRouter)
   .use(html())
   .use(staticPlugin())
