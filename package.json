@@ -10,6 +10,7 @@
     "lint:fix": "eslint src/ --fix",
     "format:check": "prettier --check src/",
     "format:fix": "prettier --write src/",
+    "typecheck": "tsc --noEmit",
     "tw": "tailwindcss -i ./src/globals.css -o ./dist/globals.css"
   },
   "dependencies": {
