@@ -27,7 +27,7 @@ export function TodoItem(todo: Todo) {
 export function TodoList({ todos }: { todos: Todo[] }) {
   return (
     <div id='todo-list'>
-      {todos.map((todo) => (
+      {todos.toReversed().map((todo) => (
         <TodoItem {...todo} />
       ))}
     </div>
@@ -40,7 +40,7 @@ export function TodoForm() {
       class='flex flex-row space-x-3'
       hx-post='/todos'
       hx-target='#todo-list'
-      hx-swap='afterend'
+      hx-swap='afterbegin'
     >
       <select name='task' class='border border-black dark:text-black'>
         <option value='Go shopping' selected='true'>
