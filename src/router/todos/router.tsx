@@ -5,8 +5,8 @@ import { db, idParamsSchema } from '~/lib/db';
 import { TodoForm, TodoItem, TodoList } from './components';
 
 export const router = new Elysia({ prefix: '/todos' })
-  .get('/', () => {
-    const allTodos = db.select().from(todos).all();
+  .get('/', async () => {
+    const allTodos = await db.select().from(todos).all();
     return (
       <div class='flex flex-col p-6'>
         <TodoForm />
@@ -16,16 +16,16 @@ export const router = new Elysia({ prefix: '/todos' })
   })
   .post(
     '/',
-    (ctx) => {
-      const newTodo = db.insert(todos).values(ctx.body).returning().get();
+    async (ctx) => {
+      const newTodo = await db.insert(todos).values(ctx.body).returning().get();
       return <TodoItem {...newTodo} />;
     },
     { body: insertTodoSchema }
   )
   .patch(
     '/:id',
-    (ctx) => {
-      const patchedTodo = db
+    async (ctx) => {
+      const patchedTodo = await db
         .update(todos)
         .set({ completed: ctx.body.completed === 'on' })
         .where(eq(todos.id, ctx.params.id))
@@ -37,8 +37,8 @@ export const router = new Elysia({ prefix: '/todos' })
   )
   .delete(
     '/:id',
-    (ctx) => {
-      db.delete(todos).where(eq(todos.id, ctx.params.id)).run();
+    async (ctx) => {
+      await db.delete(todos).where(eq(todos.id, ctx.params.id)).run();
     },
     { params: idParamsSchema }
   );

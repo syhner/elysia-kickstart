@@ -1,13 +1,13 @@
-import { Database } from 'bun:sqlite';
-import { BunSQLiteDatabase, drizzle } from 'drizzle-orm/bun-sqlite';
-import { migrate } from 'drizzle-orm/bun-sqlite/migrator';
+import { createClient } from '@libsql/client';
+import { drizzle } from 'drizzle-orm/libsql';
 import { t } from 'elysia';
+import * as todoSchemas from '~/db/schemas/todo';
 
-const sqlite = new Database('sqlite.db');
-export const db: BunSQLiteDatabase = drizzle(sqlite, { logger: true });
-
-// Run migration here since drizzle-kit push does not support bun:sqlite
-migrate(db, { migrationsFolder: './src/db/migrations' });
+const client = createClient({
+  url: process.env.DB_URL!,
+  authToken: process.env.DB_AUTH_TOKEN,
+});
+export const db = drizzle(client, { logger: true, schema: { ...todoSchemas } });
 
 // Useful for validating request params
 export const idParamsSchema = t.Object({ id: t.Numeric() });
