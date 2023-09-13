@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  elysia-dev:
+    container_name: elysia-dev
+    build:
+      context: ../../
+      dockerfile: docker/prod/Dockerfile
+    ports:
+      - '3000:3000'
