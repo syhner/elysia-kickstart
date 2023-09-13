@@ -1,8 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/prettierrc",
-  "plugins": [
-    "@ianvs/prettier-plugin-sort-imports"
-  ],
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
   "arrowParens": "always",
   "bracketSpacing": true,
   "endOfLine": "lf",
