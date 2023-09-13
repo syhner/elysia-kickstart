@@ -1,4 +1,4 @@
-import { Todo } from './schema';
+import { Todo } from '~/db/schemas/todo';
 
 export function TodoItem(todo: Todo) {
   return (
@@ -43,10 +43,9 @@ export function TodoForm() {
       hx-swap='afterend'
     >
       <select name='task' class='border border-black dark:text-black'>
-        <option value='' disabled='true' selected='true'>
-          Select a Todo
+        <option value='Go shopping' selected='true'>
+          Go shopping
         </option>
-        <option value='Go shopping'>Go shopping</option>
         <option value='Buy bread'>Buy bread</option>
         <option value='Make dinner'>Make dinner</option>
       </select>

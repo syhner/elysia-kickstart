@@ -13,11 +13,19 @@
     "format:fix": "prettier --write .",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "eslint --ignore-path .gitignore --fix . ",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "----DATABASE": "",
+    "db:drop": "drizzle-kit drop",
+    "db:generate": "drizzle-kit generate:sqlite",
+    "db:push": "drizzle-kit push:sqlite",
+    "db:view": "drizzle-kit studio"
   },
   "dependencies": {
     "@elysiajs/html": "^0.6.5",
     "@elysiajs/static": "^0.6.0",
+    "better-sqlite3": "^8.6.0",
+    "drizzle-orm": "^0.28.6",
+    "drizzle-typebox": "^0.1.1",
     "elysia": "^0.6.23",
     "typed-html": "^3.0.1"
   },
@@ -29,6 +37,7 @@
     "@typescript-eslint/parser": "^6.7.0",
     "bun-types": "latest",
     "concurrently": "^8.2.1",
+    "drizzle-kit": "^0.19.13",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.3",

@@ -1,62 +1,44 @@
-import Elysia, { NotFoundError, t } from 'elysia';
+import { eq } from 'drizzle-orm';
+import Elysia from 'elysia';
+import { insertTodoSchema, patchTodoSchema, todos } from '~/db/schemas/todo';
+import { db, idParamsSchema } from '~/lib/db';
 import { TodoForm, TodoItem, TodoList } from './components';
-import { Todo, todoSchema } from './schema';
-
-const todos: Todo[] = [
-  { id: 1, task: 'Go shopping', completed: true },
-  { id: 2, task: 'Buy bread', completed: false },
-  { id: 3, task: 'Make dinner', completed: false },
-];
 
 export const router = new Elysia({ prefix: '/todos' })
-  .get('/', () => (
-    <div class='flex flex-col p-6'>
-      <TodoForm />
-      <TodoList todos={todos} />
-    </div>
-  ))
+  .get('/', () => {
+    const allTodos = db.select().from(todos).all();
+    return (
+      <div class='flex flex-col p-6'>
+        <TodoForm />
+        <TodoList todos={allTodos} />
+      </div>
+    );
+  })
   .post(
     '/',
     (ctx) => {
-      if (!ctx.body.task.length) throw new Error('Task cannot be empty');
-      const newTodo: Todo = {
-        id: (todos.at(-1)?.id ?? 0) + 1,
-        task: ctx.body.task,
-        completed: false,
-      };
-
-      todos.push(newTodo);
+      const newTodo = db.insert(todos).values(ctx.body).returning().get();
       return <TodoItem {...newTodo} />;
     },
-    {
-      body: t.Pick(todoSchema, ['task']),
-    }
+    { body: insertTodoSchema }
   )
   .patch(
     '/:id',
     (ctx) => {
-      const todo = todos.find((todo) => todo.id === ctx.params.id);
-      if (!todo) throw new NotFoundError();
-
-      todo.completed = ctx.body.completed === 'on';
-      todos.splice(todos.indexOf(todo), 1, todo);
-
-      return <TodoItem {...todo} />;
+      const patchedTodo = db
+        .update(todos)
+        .set({ completed: ctx.body.completed === 'on' })
+        .where(eq(todos.id, ctx.params.id))
+        .returning()
+        .get();
+      return <TodoItem {...patchedTodo} />;
     },
-    {
-      params: t.Object({ id: t.Numeric() }),
-      body: t.Partial(t.Object({ completed: t.String() })),
-    }
+    { body: patchTodoSchema, params: idParamsSchema }
   )
   .delete(
     '/:id',
     (ctx) => {
-      const todo = todos.find((todo) => todo.id === ctx.params.id);
-      if (!todo) throw new NotFoundError();
-
-      todos.splice(todos.indexOf(todo), 1);
+      db.delete(todos).where(eq(todos.id, ctx.params.id)).run();
     },
-    {
-      params: t.Object({ id: t.Numeric() }),
-    }
+    { params: idParamsSchema }
   );
