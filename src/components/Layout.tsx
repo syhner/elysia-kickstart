@@ -1,10 +1,10 @@
 import * as elements from 'typed-html';
 
-type Props = {
+type LayoutProps = {
   title?: string;
 };
 
-export const Layout = (props: Props & elements.Children) => {
+export const Layout = (props: LayoutProps & elements.Children) => {
   const { title = 'elysia-kickstart' } = props;
   return (
     '<!DOCTYPE html>' +
