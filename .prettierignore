@@ -175,3 +175,7 @@ private/
 # prettier
 
 *.min.js
+
+# database
+
+src/db/migrations/*
