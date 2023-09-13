@@ -1,18 +1,6 @@
-import { t } from 'elysia';
+import { Todo } from './schema';
 
-export const todoSchema = t.Object({
-  id: t.Numeric(),
-  task: t.Union([
-    t.Literal('Go shopping'),
-    t.Literal('Buy bread'),
-    t.Literal('Make dinner'),
-  ]),
-  completed: t.Boolean(),
-});
-
-export type Todo = typeof todoSchema.static;
-
-export const TodoItem = (todo: Todo) => {
+export function TodoItem(todo: Todo) {
   return (
     <div class='flex flex-row space-x-3'>
       <input
@@ -34,9 +22,9 @@ export const TodoItem = (todo: Todo) => {
       </button>
     </div>
   );
-};
+}
 
-export const TodoList = ({ todos }: { todos: Todo[] }) => {
+export function TodoList({ todos }: { todos: Todo[] }) {
   return (
     <div id='todo-list'>
       {todos.map((todo) => (
@@ -44,9 +32,9 @@ export const TodoList = ({ todos }: { todos: Todo[] }) => {
       ))}
     </div>
   );
-};
+}
 
-export const TodoForm = () => {
+export function TodoForm() {
   return (
     <form
       class='flex flex-row space-x-3'
@@ -65,4 +53,4 @@ export const TodoForm = () => {
       <button type='submit'>Add</button>
     </form>
   );
-};
+}
