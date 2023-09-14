@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "----RUN": "",
-    "start": "bun run tw && bun run src/index.tsx",
     "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run tw --watch\"",
+    "start": "bun run tw && bun run src/index.tsx",
     "tw": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
     "----CHECK": "",
     "format:check": "prettier --check .",
