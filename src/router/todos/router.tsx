@@ -13,8 +13,8 @@ export const router = new Elysia({ prefix: '/todos' })
     const allTodos = await db.select().from(todos).all();
     return (
       <div class='flex flex-col'>
-        <TodoForm disabled={!session} />
-        <TodoList todos={allTodos} />
+        <TodoForm enabled={!!session} />
+        <TodoList todos={allTodos} enabled={!!session} />
       </div>
     );
   })
@@ -22,7 +22,7 @@ export const router = new Elysia({ prefix: '/todos' })
     '/',
     async (ctx) => {
       const newTodo = await db.insert(todos).values(ctx.body).returning().get();
-      return <TodoItem {...newTodo} />;
+      return <TodoItem todo={newTodo} enabled={true} />;
     },
     {
       body: insertTodoSchema,
@@ -38,7 +38,7 @@ export const router = new Elysia({ prefix: '/todos' })
         .where(eq(todos.id, ctx.params.id))
         .returning()
         .get();
-      return <TodoItem {...patchedTodo} />;
+      return <TodoItem todo={patchedTodo} enabled={true} />;
     },
     {
       body: patchTodoSchema,

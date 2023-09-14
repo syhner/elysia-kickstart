@@ -1,6 +1,6 @@
 import { Todo } from '~/db/schemas/todo';
 
-export function TodoItem(todo: Todo) {
+export function TodoItem({ todo, enabled }: { todo: Todo; enabled: boolean }) {
   return (
     <div class='flex flex-row space-x-3'>
       <input
@@ -10,6 +10,7 @@ export function TodoItem(todo: Todo) {
         hx-patch={`/todos/${todo.id}`}
         hx-swap='outerHTML'
         hx-target='closest div'
+        class={enabled ? '' : 'pointer-events-none'}
       />
       <p>{todo.task}</p>
       <button
@@ -17,6 +18,8 @@ export function TodoItem(todo: Todo) {
         hx-delete={`/todos/${todo.id}`}
         hx-swap='outerHTML'
         hx-target='closest div'
+        // @ts-expect-error - incorrectly typed in @elysiajs/html
+        disabled={!enabled}
       >
         X
       </button>
@@ -24,17 +27,23 @@ export function TodoItem(todo: Todo) {
   );
 }
 
-export function TodoList({ todos }: { todos: Todo[] }) {
+export function TodoList({
+  todos,
+  enabled,
+}: {
+  todos: Todo[];
+  enabled: boolean;
+}) {
   return (
     <div id='todo-list'>
       {todos.toReversed().map((todo) => (
-        <TodoItem {...todo} />
+        <TodoItem todo={todo} enabled={enabled} />
       ))}
     </div>
   );
 }
 
-export function TodoForm({ disabled }: { disabled: boolean }) {
+export function TodoForm({ enabled }: { enabled: boolean }) {
   return (
     <form
       class='flex flex-row space-x-3'
@@ -55,8 +64,8 @@ export function TodoForm({ disabled }: { disabled: boolean }) {
       <button
         type='submit'
         class='disabled:opacity-50 disabled:pointer-events-none rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 px-3'
-        // @ts-expect-error `disabled` is incorrectly typed as a string
-        disabled={disabled}
+        // @ts-expect-error - incorrectly typed in @elysiajs/html
+        disabled={!enabled}
       >
         Add
       </button>
