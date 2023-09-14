@@ -7,7 +7,7 @@ COPY package.json bun.lockb ./
 RUN bun install
 
 # Development image, copy all the files and run the server
-FROM base AS runner
+FROM base AS run
 WORKDIR /app
 # Copy files
 COPY --from=deps /app/node_modules/ ./node_modules/

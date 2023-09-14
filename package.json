@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "----RUN": "",
-    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run tw --watch\"",
-    "start": "bun run tw && bun run src/index.tsx",
-    "tw": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
+    "build": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
+    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run build --watch\"",
+    "start": "bun run build && bun run src/index.tsx",
     "----CHECK": "",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
