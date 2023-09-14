@@ -19,6 +19,6 @@ export const app = new Elysia()
     </Layout>
   ));
 
-app.listen(3000, ({ hostname, port }) => {
+app.listen(process.env.PORT ?? 3000, ({ hostname, port }) => {
   console.log(`🦊 Elysia is running at http://${hostname}:${port}`);
 });
