@@ -1,15 +1,19 @@
 import { eq } from 'drizzle-orm';
 import Elysia from 'elysia';
 import { insertTodoSchema, patchTodoSchema, todos } from '~/db/schemas/todo';
+import { isAuthenticated } from '~/hooks/isAuthenticated';
+import { getSession } from '~/lib/auth';
 import { db, idParamsSchema } from '~/lib/db';
 import { TodoForm, TodoItem, TodoList } from './components';
 
 export const router = new Elysia({ prefix: '/todos' })
-  .get('/', async () => {
+  .get('/', async (ctx) => {
+    const session = await getSession(ctx.request);
+
     const allTodos = await db.select().from(todos).all();
     return (
-      <div class='flex flex-col p-6'>
-        <TodoForm />
+      <div class='flex flex-col'>
+        <TodoForm disabled={!session} />
         <TodoList todos={allTodos} />
       </div>
     );
@@ -20,7 +24,10 @@ export const router = new Elysia({ prefix: '/todos' })
       const newTodo = await db.insert(todos).values(ctx.body).returning().get();
       return <TodoItem {...newTodo} />;
     },
-    { body: insertTodoSchema }
+    {
+      body: insertTodoSchema,
+      beforeHandle: [isAuthenticated],
+    }
   )
   .patch(
     '/:id',
@@ -33,12 +40,19 @@ export const router = new Elysia({ prefix: '/todos' })
         .get();
       return <TodoItem {...patchedTodo} />;
     },
-    { body: patchTodoSchema, params: idParamsSchema }
+    {
+      body: patchTodoSchema,
+      params: idParamsSchema,
+      beforeHandle: [isAuthenticated],
+    }
   )
   .delete(
     '/:id',
     async (ctx) => {
       await db.delete(todos).where(eq(todos.id, ctx.params.id)).run();
     },
-    { params: idParamsSchema }
+    {
+      params: idParamsSchema,
+      beforeHandle: [isAuthenticated],
+    }
   );

@@ -21,6 +21,7 @@
     "db:view": "drizzle-kit studio"
   },
   "dependencies": {
+    "@auth/core": "^0.14.0",
     "@elysiajs/html": "^0.6.5",
     "@elysiajs/static": "^0.6.0",
     "@elysiajs/swagger": "^0.6.2",

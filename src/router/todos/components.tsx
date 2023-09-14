@@ -34,7 +34,7 @@ export function TodoList({ todos }: { todos: Todo[] }) {
   );
 }
 
-export function TodoForm() {
+export function TodoForm({ disabled }: { disabled: boolean }) {
   return (
     <form
       class='flex flex-row space-x-3'
@@ -42,14 +42,24 @@ export function TodoForm() {
       hx-target='#todo-list'
       hx-swap='afterbegin'
     >
-      <select name='task' class='border border-black dark:text-black'>
+      <select
+        name='task'
+        class='rounded-sm border border-black dark:text-black'
+      >
         <option value='Go shopping' selected='true'>
           Go shopping
         </option>
         <option value='Buy bread'>Buy bread</option>
         <option value='Make dinner'>Make dinner</option>
       </select>
-      <button type='submit'>Add</button>
+      <button
+        type='submit'
+        class='disabled:opacity-50 disabled:pointer-events-none rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 px-3'
+        // @ts-expect-error `disabled` is incorrectly typed as a string
+        disabled={disabled}
+      >
+        Add
+      </button>
     </form>
   );
 }
