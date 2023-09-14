@@ -8,6 +8,13 @@
       "when": 1694640999693,
       "tag": "0000_zippy_rage",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1694718270588,
+      "tag": "0001_silent_blizzard",
+      "breakpoints": true
     }
   ]
 }
