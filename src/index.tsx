@@ -33,6 +33,6 @@ export const app = new Elysia()
     );
   });
 
-app.listen(process.env.PORT ?? 3000, ({ hostname, port }) => {
+app.listen(process.env.PORT, ({ hostname, port }) => {
   console.log(`🦊 Elysia is running at http://${hostname}:${port}`);
 });

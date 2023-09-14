@@ -5,7 +5,7 @@ import * as authSchemas from '~/db/schemas/auth';
 import * as todoSchemas from '~/db/schemas/todo';
 
 const client = createClient({
-  url: process.env.DB_URL!,
+  url: process.env.DB_URL,
   authToken: process.env.DB_AUTH_TOKEN,
 });
 export const db = drizzle(client, {
