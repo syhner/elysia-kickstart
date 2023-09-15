@@ -41,11 +41,19 @@ const fixCtxRequest = (request: Request) => {
 
 export const app = new Elysia()
   .derive((ctx) => ({ request: fixCtxRequest(ctx.request) }))
+
+  // Plugins on all routes
   .use(swagger())
+
+  // Non-page routes
   .use(apiRouter)
+
+  // Plugins on all page routes
   .use(html())
   .use(staticPlugin())
   .get('/dist/globals.css', () => Bun.file('./dist/globals.css'))
+
+  // Page routes
   .use(todosRouter)
   .get('/', async (ctx) => {
     const session = await getSession(ctx.request);
