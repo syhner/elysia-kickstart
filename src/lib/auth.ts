@@ -52,7 +52,6 @@ export const getSession = async (request: Request) => {
     const session = await Auth(
       new Request(url, {
         method: 'GET',
-        body: request.body,
         headers: request.headers,
       }),
       authConfig
