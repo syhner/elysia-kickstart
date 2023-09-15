@@ -4,7 +4,6 @@ import { authConfig } from '~/lib/auth';
 
 export const router = new Elysia({ prefix: '/auth' })
   .get('/*', async (ctx) => {
-    console.log(ctx.request);
     const res = await Auth(ctx.request, authConfig);
     return res;
   })
