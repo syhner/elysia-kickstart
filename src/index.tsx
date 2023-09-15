@@ -8,7 +8,30 @@ import { getSession } from './lib/auth';
 import { router as apiRouter } from './router/api/router';
 import { router as todosRouter } from './router/todos/router';
 
+/**
+ * Elysia's ctx.request is always http://
+ * This function returns a new Request object with https://
+ * under a condition, otherwise the redirect_uri will mismatch
+ * and authentication will fail
+ */
+const fixCtxRequest = (request: Request) => {
+  if (process.env.NODE_ENV !== 'production') {
+    return request;
+  }
+
+  const httpsUrl = request.url.replace('http://', 'https://');
+
+  const newRequest = new Request(httpsUrl, {
+    body: request.body,
+    headers: request.headers,
+    method: request.method,
+  });
+
+  return newRequest;
+};
+
 export const app = new Elysia()
+  .derive((ctx) => ({ request: fixCtxRequest(ctx.request) }))
   .use(swagger())
   .use(apiRouter)
   .use(html())
