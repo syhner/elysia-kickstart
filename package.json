@@ -6,8 +6,8 @@
   "scripts": {
     "----RUN": "",
     "build": "tailwindcss -i ./src/globals.css -o ./dist/globals.css",
-    "dev": "concurrently \"bun run --watch src/index.tsx\" \"bun run build --watch\"",
-    "start": "bun run build && bun run src/index.tsx",
+    "dev": "concurrently \"bun --watch src/index.tsx\" \"bun run build --watch\"",
+    "start": "bun run build && bun src/index.tsx",
     "----CHECK": "",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
