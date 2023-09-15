@@ -6,7 +6,7 @@ import { getSession } from '~/lib/auth';
 import { db, idParamsSchema } from '~/lib/db';
 import { TodoForm, TodoItem, TodoList } from './components';
 
-export const router = new Elysia({ prefix: '/todos' })
+export const routes = new Elysia({ prefix: '/todos' })
   .get('/', async (ctx) => {
     const session = await getSession(ctx.request);
 

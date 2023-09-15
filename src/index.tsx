@@ -2,11 +2,11 @@ import { html } from '@elysiajs/html';
 import { staticPlugin } from '@elysiajs/static';
 import { swagger } from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
+import { routes as apiRoutes } from './app/api';
+import { routes as todosRoutes } from './app/todos';
 import { SignIn, SignOut } from './components/auth';
 import { Layout } from './components/Layout';
 import { getSession } from './lib/auth';
-import { router as apiRouter } from './router/api/router';
-import { router as todosRouter } from './router/todos/router';
 
 /**
  * Elysia's ctx.request is always http://
@@ -46,7 +46,7 @@ export const app = new Elysia()
   .use(swagger())
 
   // Non-page routes
-  .use(apiRouter)
+  .use(apiRoutes)
 
   // Plugins on all page routes
   .use(html())
@@ -54,7 +54,7 @@ export const app = new Elysia()
   .get('/dist/globals.css', () => Bun.file('./dist/globals.css'))
 
   // Page routes
-  .use(todosRouter)
+  .use(todosRoutes)
   .get('/', async (ctx) => {
     const session = await getSession(ctx.request);
 
