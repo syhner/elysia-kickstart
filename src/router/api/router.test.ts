@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'bun:test';
-import { router } from './router';
+import { app } from '~/index';
 
 describe('api', () => {
   it('ping endpoint returns pong', async () => {
-    const response = await router
+    const response = await app
       .handle(new Request('http://localhost/api/ping'))
       .then((res) => res.text());
 
