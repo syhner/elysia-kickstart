@@ -1,13 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "elysia-kickstart",
-  "module": "src/index.tsx",
+  "module": "src/app/index.tsx",
   "type": "module",
   "scripts": {
     "----RUN": "",
     "build": "tailwindcss -i ./src/styles/globals.css -o ./dist/globals.css",
-    "dev": "concurrently \"bun --watch src/index.tsx\" \"bun run build --watch\"",
-    "start": "bun run build && bun src/index.tsx",
+    "dev": "concurrently \"bun --watch src/app/index.tsx\" \"bun run build --watch\"",
+    "start": "bun run build && bun src/app/index.tsx",
     "----CHECK": "",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",

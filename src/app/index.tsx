@@ -2,11 +2,11 @@ import { html } from '@elysiajs/html';
 import { staticPlugin } from '@elysiajs/static';
 import { swagger } from '@elysiajs/swagger';
 import { Elysia } from 'elysia';
-import { routes as apiRoutes } from './app/api';
-import { routes as todosRoutes } from './app/todos';
-import { SignIn, SignOut } from './components/auth';
-import { Layout } from './components/Layout';
-import { getSession } from './lib/auth';
+import { SignIn, SignOut } from '../components/auth';
+import { Layout } from '../components/Layout';
+import { getSession } from '../lib/auth';
+import { routes as apiRoutes } from './api';
+import { routes as todosRoutes } from './todos';
 
 /**
  * Elysia's ctx.request is always http://

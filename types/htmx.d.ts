@@ -1,5 +1,5 @@
 import type { S } from 'ts-toolbelt';
-import type { App } from '~/index';
+import type { App } from '~/app';
 
 declare global {
   namespace JSX {

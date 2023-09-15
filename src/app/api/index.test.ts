@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test';
-import { app } from '~/index';
+import { app } from '~/app/index';
 
 describe('api', () => {
   it('ping endpoint returns pong', async () => {
