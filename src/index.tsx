@@ -25,6 +25,15 @@ const fixCtxRequest = (request: Request) => {
     body: request.body,
     headers: request.headers,
     method: request.method,
+    cache: request.cache,
+    credentials: request.credentials,
+    integrity: request.integrity,
+    keepalive: request.keepalive,
+    mode: request.mode,
+    redirect: request.redirect,
+    referrer: request.referrer,
+    referrerPolicy: request.referrerPolicy,
+    signal: request.signal,
   });
 
   return newRequest;
