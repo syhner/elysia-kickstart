@@ -175,3 +175,8 @@ private/
 # database
 
 *.db
+
+# vercel
+
+.vercel
+public/globals.css

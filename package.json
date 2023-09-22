@@ -1,13 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "elysia-kickstart",
-  "module": "src/app/index.tsx",
+  "module": "src/index.tsx",
   "type": "module",
   "scripts": {
+    "----BUILD": "",
+    "build": "tailwindcss -i ./src/styles/globals.css -o ./public/globals.css",
+    "build:vercel": "bun run build && bun scripts/transform-paths.ts",
     "----RUN": "",
-    "build": "tailwindcss -i ./src/styles/globals.css -o ./dist/globals.css",
-    "dev": "concurrently \"bun --watch src/app/index.tsx\" \"bun run build --watch\"",
-    "start": "bun run build && bun src/app/index.tsx",
+    "dev": "concurrently \"bun --watch src/index.ts\" \"bun run build --watch\"",
+    "start": "bun run build && bun src/index.ts",
     "----CHECK": "",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
@@ -31,7 +33,6 @@
     "drizzle-orm": "^0.28.6",
     "drizzle-typebox": "^0.1.1",
     "elysia": "^0.6.23",
-    "typed-html": "^3.0.1",
     "zod": "^3.22.2"
   },
   "devDependencies": {
@@ -50,6 +51,7 @@
     "tailwindcss": "^3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "ts-toolbelt": "^9.6.0",
+    "typed-html": "^3.0.1",
     "typescript": "^5.2.2"
   }
 }
