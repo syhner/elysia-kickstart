@@ -16,6 +16,11 @@ export const Layout = (props: LayoutProps & elements.Children) => {
             name='viewport'
             content='width=device-width, initial-scale=1.0'
           />
+          <link
+            rel='icon'
+            type='image/x-icon'
+            href='/public/favicon.ico'
+          ></link>
           <title>{title}</title>
           <link href='/public/globals.css' rel='stylesheet' />
           <script src='/public/htmx@1.9.5.min.js'></script>
