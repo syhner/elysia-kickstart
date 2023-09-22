@@ -12,7 +12,7 @@
     "paths": {
       "~/*": ["./src/*"] // Alias for absolute imports
     },
-    // "resolveJsonModule": true,
+    "resolveJsonModule": true,
     "types": ["bun-types"], // add Bun global
 
     /* Emit */
