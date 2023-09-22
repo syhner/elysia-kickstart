@@ -10,7 +10,7 @@ export function TodoItem({ todo, enabled }: { todo: Todo; enabled: boolean }) {
         hx-patch={`/todos/${todo.id}`}
         hx-swap='outerHTML'
         hx-target='closest div'
-        class={enabled ? '' : 'pointer-events-none'}
+        disabled={!enabled}
       />
       <p>{todo.task}</p>
       <button
