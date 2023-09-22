@@ -4,6 +4,7 @@ import { Session } from '@auth/core/types';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { and, eq } from 'drizzle-orm';
 import { accounts, users } from '~/db/schemas/auth';
+import { env } from '~/env';
 import { db } from './db';
 
 // https://github.com/nextauthjs/next-auth/issues/8377#issuecomment-1694720111
@@ -33,11 +34,11 @@ export const authConfig: AuthConfig = {
   // @ts-expect-error Required since accounts.email is nullable (with minimal GitHub scope)
   adapter: modifiedDrizzleAdapter(),
   trustHost: true,
-  secret: process.env.AUTH_SECRET,
+  secret: env.AUTH_SECRET,
   providers: [
     GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
+      clientId: env.AUTH_GITHUB_ID,
+      clientSecret: env.AUTH_GITHUB_SECRET,
     }),
   ],
 };
