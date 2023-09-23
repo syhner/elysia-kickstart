@@ -25,7 +25,7 @@
   "dependencies": {
     "@auth/core": "^0.14.0",
     "@auth/drizzle-adapter": "^0.3.2",
-    "@elysiajs/html": "^0.6.5",
+    "@elysiajs/html": "^0.7.0",
     "@elysiajs/static": "^0.6.0",
     "@elysiajs/swagger": "^0.6.2",
     "@libsql/client": "^0.3.4",
@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@kitajs/html": "^2.2.2",
+    "@kitajs/ts-html-plugin": "^1.0.2",
     "@tailwindcss/typography": "^0.5.10",
     "@total-typescript/ts-reset": "^0.5.1",
     "@typescript-eslint/eslint-plugin": "^6.7.0",

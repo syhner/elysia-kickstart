@@ -18,7 +18,6 @@ export function TodoItem({ todo, enabled }: { todo: Todo; enabled: boolean }) {
         hx-delete={`/todos/${todo.id}`}
         hx-swap='outerHTML'
         hx-target='closest div'
-        // @ts-expect-error - incorrectly typed in @elysiajs/html
         disabled={!enabled}
       >
         X
@@ -64,7 +63,6 @@ export function TodoForm({ enabled }: { enabled: boolean }) {
       <button
         type='submit'
         class='disabled:opacity-50 disabled:pointer-events-none rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 px-3'
-        // @ts-expect-error - incorrectly typed in @elysiajs/html
         disabled={!enabled}
       >
         Add
