@@ -36,6 +36,6 @@ export const app = createElysia()
       </Layout>
     );
   })
-  .get('/url', (ctx) => ctx.request.url);
+  .get('/health', (ctx) => 'ok');
 
 export type App = typeof app;
