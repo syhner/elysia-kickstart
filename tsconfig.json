@@ -23,7 +23,6 @@
     "allowJs": true,
 
     /* Editor Support */
-    "plugins": [{ "name": "@kitajs/ts-html-plugin" }],
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
@@ -33,8 +32,8 @@
 
     /* Language and Environment */
     "jsx": "react",
-    "jsxFactory": "Html.createElement",
-    "jsxFragmentFactory": "Html.Fragment",
+    "jsxFactory": "ElysiaJSX",
+    "jsxFragmentFactory": "ElysiaJSX.Fragment",
     "lib": ["ESNext"],
     "moduleDetection": "force",
     "target": "ESNext",
