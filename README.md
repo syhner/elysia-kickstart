@@ -34,9 +34,9 @@ Taken inspiration from https://github.com/ethanniser/the-beth-stack.
 
 - To Railway (deployed with Docker)
 
-  [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/2Tef8-?referralCode=Q9UMnd)
+  [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/UguE-M?referralCode=Q9UMnd)
 
-- To Vercel (Edge Functions)
+- To Vercel Edge Functions (see the [Railway template](https://railway.app/template/UguE-M?referralCode=Q9UMnd) for required environment variables, as well as `EDGE=true`)
 
   [![Vercel](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2FSyhner%2Felysia-kickstart)
 
