@@ -12,7 +12,7 @@ Taken inspiration from https://github.com/ethanniser/the-beth-stack.
 - 🐉 [**ElysiaJS**](https://elysiajs.com/) - Fast and Bun friendly server framework
 - 📐 [**HTMX**](https://www.typescriptlang.org/) - High power tools for HTML
 - 💽 [**Drizzle**](https://orm.drizzle.team/) - ORM with maximal type safety
-- 🔒 [**Auth.js**](https://next-auth.js.org/) - Flexible and secure authentication
+- 🔒 [**Auth.js**](https://authjs.dev) - Flexible and secure authentication
   - 🔗 integrates with Drizzle to store auth data
 
 ### Development
@@ -20,7 +20,6 @@ Taken inspiration from https://github.com/ethanniser/the-beth-stack.
 - 📏 [**ESLint**](https://eslint.org/) - Consistent code standards
 - ✨ [**Prettier**](https://prettier.io/) - Consistent code styling
 - 🎨 [**Tailwind CSS**](https://tailwindcss.com/) - Utility-first CSS framework
-- 📁 [**Absolute imports**](https://nextjs.org/docs/app/building-your-application/configuring/absolute-imports-and-module-aliases) - Easier and cleaner module imports
 - 💻 [**VS Code configurations**](https://code.visualstudio.com/) - Configurations for extensions
 
 ### Deployment
@@ -42,7 +41,7 @@ Taken inspiration from https://github.com/ethanniser/the-beth-stack.
 
 📋 **Option 2: Clone and run locally**
 
-1. [Fork this repository](https://github.com/syhner/next-kickstart/fork) (uncheck 'Copy the `main` branch only` if you are interested in other branches / feature sets)
+1. [Fork this repository](https://github.com/syhner/elysia-kickstart/fork) (uncheck 'Copy the `main` branch only` if you are interested in other branches / feature sets)
 2. Clone your new repository
 3. Install dependencies and run the development server
 
