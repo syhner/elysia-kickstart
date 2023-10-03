@@ -11,9 +11,9 @@ Taken inspiration from https://github.com/ethanniser/the-beth-stack.
 - 🏗️ [**TypeScript**](https://www.typescriptlang.org/) - Configured to maximize type safety
 - 🐉 [**ElysiaJS**](https://elysiajs.com/) - Fast and Bun friendly server framework
 - 📐 [**HTMX**](https://www.typescriptlang.org/) - High power tools for HTML
-- 💽💡 [**Drizzle**](https://orm.drizzle.team/) - ORM with maximal type safety
-- 🔒💡 [**Auth.js**](https://next-auth.js.org/) - Flexible and secure authentication
-  - 🔗💡 integrates with Drizzle to store auth data
+- 💽 [**Drizzle**](https://orm.drizzle.team/) - ORM with maximal type safety
+- 🔒 [**Auth.js**](https://next-auth.js.org/) - Flexible and secure authentication
+  - 🔗 integrates with Drizzle to store auth data
 
 ### Development
 
